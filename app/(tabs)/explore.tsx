@@ -3,6 +3,7 @@ import { Platform, StyleSheet } from 'react-native';
 
 import { Collapsible } from '@/components/Collapsible';
 import { ExternalLink } from '@/components/ExternalLink';
+import { LocationTracker } from '@/components/LocationTracker';
 import ParallaxScrollView from '@/components/ParallaxScrollView';
 import { ThemedText } from '@/components/ThemedText';
 import { ThemedView } from '@/components/ThemedView';
@@ -24,6 +25,18 @@ export default function TabTwoScreen() {
         <ThemedText type="title">Explore</ThemedText>
       </ThemedView>
       <ThemedText>This app includes example code to help you get started.</ThemedText>
+      
+      <Collapsible title="AQI Zone Tracker Feature">
+        <ThemedText>
+          This app includes an AQI (Air Quality Index) zone tracker that monitors your location and alerts you when you move 20 meters from your current position, indicating you may be entering a different air quality zone.
+        </ThemedText>
+        <LocationTracker />
+        <ThemedText style={styles.featureDescription}>
+          The location tracker uses GPS to monitor your movement in real-time. When you move 20 meters from your starting position, 
+          it triggers a notification warning about entering a yellow AQI zone. This helps users stay aware of air quality changes as they move around.
+        </ThemedText>
+      </Collapsible>
+      
       <Collapsible title="File-based routing">
         <ThemedText>
           This app has two screens:{' '}
@@ -106,5 +119,10 @@ const styles = StyleSheet.create({
   titleContainer: {
     flexDirection: 'row',
     gap: 8,
+  },
+  featureDescription: {
+    marginTop: 12,
+    fontSize: 14,
+    opacity: 0.8,
   },
 });

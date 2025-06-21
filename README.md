@@ -2,6 +2,24 @@
 
 This is an [Expo](https://expo.dev) project created with [`create-expo-app`](https://www.npmjs.com/package/create-expo-app).
 
+## Features
+
+### AQI Zone Tracker
+This app includes an AQI (Air Quality Index) zone tracker that monitors your location and alerts you when you move 20 meters from your current position, indicating you may be entering a different air quality zone.
+
+- **Real-time location tracking**: Continuously monitors your GPS position
+- **Distance calculation**: Uses Haversine formula for accurate distance measurement
+- **Smart notifications**: Sends alerts when you move 20 meters from starting position
+- **AQI zone awareness**: Helps users stay informed about air quality changes
+- **Cross-platform**: Works on both iOS and Android devices
+- **Permission handling**: Automatically requests necessary location and notification permissions
+
+To use the AQI zone tracker:
+1. Navigate to the Home or Explore tab
+2. Tap "Start Tracking" to begin location monitoring
+3. Move 20 meters from your starting position to trigger an AQI zone alert
+4. Tap "Stop Tracking" to disable location monitoring
+
 ## Get started
 
 1. Install dependencies
