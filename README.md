@@ -1,6 +1,6 @@
 # Welcome to your Expo app 👋
 This is an [Expo](https://expo.dev) project created with [`create-expo-app`](https://www.npmjs.com/package/create-expo-app).
-Download this APK: https://expo.dev/accounts/7sohamd/projects/vayu/builds/17e86ac4-87b2-40e9-9c43-11c825fcadd7
+- Download this APK: https://expo.dev/accounts/7sohamd/projects/vayu/builds/17e86ac4-87b2-40e9-9c43-11c825fcadd7
 
 ## Features
 
