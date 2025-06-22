@@ -12,7 +12,7 @@ export const CoinWebView: React.FC<CoinWebViewProps> = ({ onClose }) => {
   return (
     <ThemedView style={styles.container}>
       <View style={styles.header}>
-        <ThemedText style={styles.title}>Vayu Coins</ThemedText>
+        <ThemedText style={styles.title}>Vayu</ThemedText>
         <ThemedText style={styles.closeButton} onPress={onClose}>
           ✕
         </ThemedText>

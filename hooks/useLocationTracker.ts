@@ -74,7 +74,7 @@ export const useLocationTracker = () => {
 
     // Detect significant change in acceleration (potential step)
     const accelerationChange = Math.abs(currentMagnitude - lastMagnitude);
-    const stepThreshold = 0.5; // Adjust based on testing
+    const stepThreshold = 0.3; // Increased sensitivity for better step detection
 
     if (accelerationChange > stepThreshold) {
       movementSteps.current++;
@@ -131,11 +131,14 @@ export const useLocationTracker = () => {
   };
 
   const startTracking = async () => {
+    console.log('User clicked Start Monitoring - requesting permissions...');
     const hasPermission = await requestPermissions();
     if (!hasPermission) {
+      console.log('Permission denied - tracking not started');
       return;
     }
 
+    console.log('Permissions granted - starting tracking...');
     setIsTracking(true);
     setZoneAlertTriggered(false);
     setDistanceTravelled(0);
@@ -167,6 +170,7 @@ export const useLocationTracker = () => {
 
     // Try to get GPS location (but don't fail if accuracy is poor)
     try {
+      console.log('Requesting initial GPS position...');
       const initialPosition = await Location.getCurrentPositionAsync({
         accuracy: Location.Accuracy.Balanced,
       });
@@ -186,6 +190,7 @@ export const useLocationTracker = () => {
 
       // Only use GPS for distance calculation if accuracy is reasonable
       if (!accuracy || accuracy <= 50) {
+        console.log('Starting GPS position watching...');
         // Start GPS watching
         locationSubscription.current = await Location.watchPositionAsync(
           {
@@ -247,6 +252,7 @@ export const useLocationTracker = () => {
     setIsTracking(false);
     setZoneAlertTriggered(false);
     setDistanceTravelled(0);
+    setCurrentLocation(null);
     movementSteps.current = 0;
     estimatedDistance.current = 0;
     initialLocation.current = null;
@@ -255,11 +261,13 @@ export const useLocationTracker = () => {
     if (locationSubscription.current) {
       locationSubscription.current.remove();
       locationSubscription.current = null;
+      console.log('GPS subscription removed');
     }
 
     if (accelerometerSubscription.current) {
-      accelerometerSubscription.current.remove();
+      Accelerometer.removeAllListeners();
       accelerometerSubscription.current = null;
+      console.log('Accelerometer listeners removed');
     }
 
     console.log('Tracking stopped');

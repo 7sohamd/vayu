@@ -242,14 +242,6 @@ export const LocationTracker: React.FC = () => {
               Acquiring location...
             </ThemedText>
           )}
-          
-          {/* Debug info */}
-          <View style={styles.locationRow}>
-            <ThemedText style={styles.locationLabel}>Debug:</ThemedText>
-            <ThemedText style={styles.locationValue}>
-              {currentLocation ? 'Location Available' : 'No Location'}
-            </ThemedText>
-          </View>
         </View>
       )}
     </ThemedView>
